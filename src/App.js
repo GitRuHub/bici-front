@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from "./pages/home/home";
+import Login from "./pages/login/login";
+import NotFound from './pages/notFound/notFound';
+import Register from './pages/register/register';
+import Perfil from './pages/perfil/perfil';
+import Alquileres from './pages/components/alquileres/alquileres';
+
+
+function AppWrapper() {
+     return (
+        <Routes>
+           <Route path="/" element={<Home />} />
+           <Route path="/home" element={<Home />} />
+           <Route path="/login" element={<Login />} />
+           <Route path="/register" element={<Register />} />
+           <Route path="/perfil" element={<Perfil />} />
+           <Route path="/alquileres" element={<Alquileres />} />
+           <Route path="/404" element={<NotFound />} />
+           <Route path="*" element={<NotFound />} />
+        </Routes>
+);
+}
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+         return (
+            <Router>
+              <AppWrapper />
+            </Router>
+);
 }
 
 export default App;
